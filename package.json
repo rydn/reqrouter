@@ -1,0 +1,26 @@
+{
+  "name": "req-router",
+  "version": "0.0.0",
+  "description": "request router depending on domain requested... inline performace metrics are also collected\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://git@bitbucket.org/ryandick/reqrouter.git"
+  },
+  "keywords": [
+    "router",
+    "vhost",
+    "metrics"
+  ],
+  "author": "Ryan Dick",
+  "license": "BSD",
+  "dependencies": {
+    "http-proxy": "~0.10.2",
+    "harmon": "~0.1.0",
+    "connect-gzip": "~0.1.6",
+    "colors": "~0.6.0-1"
+  }
+}
