@@ -21,6 +21,7 @@
     "http-proxy": "~0.10.2",
     "harmon": "~0.1.0",
     "connect-gzip": "~0.1.6",
-    "colors": "~0.6.0-1"
+    "colors": "~0.6.0-1",
+    "underscore": "~1.4.4"
   }
 }

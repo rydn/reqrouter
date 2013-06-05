@@ -1,15 +1,27 @@
+/*
+	Dependencies 
+ */
 var http = require('http'),
 	util = require('util'),
 	colors = require('colors'),
+	_ = require('underscore'),
+	fs = require('fs'),
 	httpProxy = require('http-proxy');
-
-httpProxy.createServer( require('connect-gzip').gzip({ matchType: /.?/ }),
-{
-  router: {
-    'forever.habitat4.info': '127.0.0.1:8085',
-    'nmon.habitat4.info' : '127.0.0.1:3000'
-  }
+//	read routes
+var routes = fs.readFileSync('./config.json');
+routes = JSON.parse(routes);
+/*
+	Start http proxy
+   */
+httpProxy.createServer(require('connect-gzip').gzip({
+	matchType: /.?/
+}), {
+	router: routes
 }).listen(80);
-util.puts('http proxy server'.blue + ' started '.green.bold + 'on port '.blue + '80'.yellow);
-util.puts('forever.habitat4.info '.blue + ' forwarding to localhost '.green.bold + 'on port '.blue + '8085 '.yellow);
-
+util.puts('HTTP proxy server'.cyan.bold + ' forwarding from '.green.bold + '80'.green.bold);
+util.puts('-----------------------------------------------------------------------------------------------'.white);
+util.puts('					Running Hosts');
+util.puts('-----------------------------------------------------------------------------------------------'.white);
+_.each(routes, function(i, route) {
+	util.puts(i.cyan + '			--------->		 '.grey + String('http://' + route).magenta.bold);
+});
